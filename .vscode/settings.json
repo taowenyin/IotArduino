@@ -1,0 +1,5 @@
+{
+    "terminal.integrated.env.linux": {
+        "PATH": "/home/taowenyin/.platformio/penv/bin:/home/taowenyin/bin:/home/taowenyin/.local/bin:/opt/ros/kinetic/bin:/home/taowenyin/.nvm/versions/node/v9.3.0/bin:/home/taowenyin/bin:/home/taowenyin/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-9-oracle/bin:/usr/lib/jvm/java-9-oracle/db/bin:/usr/lib/jvm/java-9-oracle/bin:/usr/lib/jvm/java-9-oracle/db/bin:/home/taowenyin/Android/Sdk/platform-tools:/home/taowenyin/Android/Sdk/tools"
+    }
+}

@@ -5,6 +5,9 @@
 char LEDState[2] = {0}; // LED的值
 int LEDValue = -1;
 
+char ErrorState[2] = {0}; // LED的值
+int ErrorValue = -1;
+
 void setup() {
     // 初始化LED灯
     pinMode(LED_BUILTIN, OUTPUT);
@@ -19,21 +22,29 @@ void setup() {
 void loop() {
     // 读取当前从Bridge传来的数据
     Bridge.get("LED", LEDState, 2);
+    Bridge.get("ERROR", ErrorState, 2);
     LEDValue = atoi(LEDState);
+    ErrorValue = atoi(ErrorState);
 
-    // 当传递过来的值为1时表示开灯，为0时表示关灯
-    if(LEDValue != 0) {
-        if(LEDValue == 1) { // LED亮
-            digitalWrite(LED_BUILTIN, 1);
-        }
-        if(LEDValue == 2) { // LED灭
-            digitalWrite(LED_BUILTIN, 0);
-        }
+    if(ErrorValue == 2) {
+        // 当传递过来的值为1时表示开灯，为0时表示关灯
+        if(LEDValue != 0) {
+            if(LEDValue == 1) { // LED亮
+                digitalWrite(LED_BUILTIN, 1);
+            }
+            if(LEDValue == 2) { // LED灭
+                digitalWrite(LED_BUILTIN, 0);
+            }
 
-        Serial.println("Data is " + LEDValue);
-    } else {
-        Serial.println("Data is 0");
+            Serial.println("Data is " + LEDValue);
+        } else {
+            Serial.println("Data is 0");
+        }
+    } else if(ErrorValue == 1) {
+        digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
     }
+
+    
 
     delay(50);
 }
